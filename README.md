@@ -6,3 +6,5 @@ Manejo Ficheros Acceso a Datos
 - git add .
 - git commit -m "lo que sea"
 - git push origin "tu rama"
+
+# No hacer push a main!
