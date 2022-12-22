@@ -5,3 +5,9 @@ Este es un registro temporal de los cambios, ajustes e implementaciones desarrol
 - Iniciada mi parte del proyecto
 - Añadido el TODO.md
 - Añadido el pdf
+
+Archivos que debe leer:
+ - Excel > xlsx
+ - Excel 95-03 > xls
+ - Excel 5.0-95 > xls
+ - open XML > xlsx
