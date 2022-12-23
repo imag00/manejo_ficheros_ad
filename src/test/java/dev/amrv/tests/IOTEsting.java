@@ -1,8 +1,5 @@
 package dev.amrv.tests;
 
-import java.io.IOException;
-
-import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -11,53 +8,69 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class IOTEsting {
 
-    public static void main(String[] args) {
-	final String doc = "terrenos-cinegeticos.xls";
-	Workbook document;
-	try {
-	    document = WorkbookFactory.create(IOTEsting.class.getClassLoader().getResourceAsStream(doc));
-	    for (int i = 0; i < document.getNumberOfSheets(); i++) {
-		viewSheet(document.getSheetAt(i));
-	    }
-	} catch (EncryptedDocumentException | IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+	private static final int[] STRING_SIZE = { 40, 40, 30, 20, 20, 11, 35, 40, 40, 12, 12, 30 };
+
+	public static void main(String[] args) {
+		final String doc = "comercios.xlsx";
+		StringBuilder builder = new StringBuilder();
+
+		try {
+			Workbook document = WorkbookFactory.create(IOTEsting.class.getClassLoader().getResourceAsStream(doc));
+			for (int i = 0; i < document.getNumberOfSheets(); i++) {
+				builder.append(viewSheet(document.getSheetAt(i)));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(builder.toString());
+
 	}
 
-    }
+	public static String viewSheet(Sheet sheet) {
+		if (sheet == null) {
+			System.err.println("Unable to load sheet");
+			return "";
+		}
 
-    public static void viewSheet(Sheet sheet) {
-	if (sheet == null) {
-	    System.err.println("Unable to load sheet");
-	    return;
+		StringBuilder builder = new StringBuilder();
+
+		for (int i = 0; i < sheet.getLastRowNum(); i++) {
+			builder.append(viewRow(sheet.getRow(i)));
+		}
+		return builder.toString();
 	}
 
-	for (int i = sheet.getFirstRowNum(); i < sheet.getLastRowNum(); i++) {
-	    viewRow(sheet.getRow(i));
-	}
-    }
+	public static String viewRow(Row row) {
+		if (row == null)
+			return "| Empty";
 
-    public static void viewRow(Row row) {
-	if (row == null) {
-	    System.err.println("Unable to load row");
-	    return;
-	}
+		StringBuilder builder = new StringBuilder("| ");
 
-	System.out.print("| ");
-	for (int i = row.getFirstCellNum(); i < row.getLastCellNum(); i++) {
-	    viewCell(row.getCell(i));
-	    System.out.print(" | ");
-	}
-	System.out.println();
-    }
-
-    public static void viewCell(Cell cell) {
-	if (cell == null) {
-	    System.err.println("Unable to read cell");
-	    return;
+		for (int i = 0; i < row.getLastCellNum(); i++) {
+			builder.append(viewCell(row.getCell(i), i)).append(" | ");
+		}
+		return builder.toString() + System.lineSeparator();
 	}
 
-	System.out.print(cell.getStringCellValue());
-    }
+	public static String viewCell(Cell cell, int col) {
+		if (cell == null) {
+			return " ".repeat(STRING_SIZE[col]);
+		}
+
+		return formatString(cell.getStringCellValue(), col);
+	}
+
+	public static String formatString(String str, int col) {
+		if (str.length() > STRING_SIZE[Math.min(col, STRING_SIZE.length - 1)] - 3) {
+			return str.substring(0, STRING_SIZE[Math.min(col, STRING_SIZE.length - 1)] - 3) + "...";
+
+		} else if (str.length() < STRING_SIZE[Math.min(col, STRING_SIZE.length - 1)]) {
+			return str + " ".repeat(STRING_SIZE[Math.min(col, STRING_SIZE.length - 1)] - str.length());
+
+		} else
+			return str;
+
+	}
 
 }
