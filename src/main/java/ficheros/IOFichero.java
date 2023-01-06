@@ -16,11 +16,12 @@ public abstract class IOFichero {
 
 		try {
 			if (!file.exists()) {
-				boolean dirs = file.getParentFile().mkdirs();
+				if (file.getParentFile() != null) {
+					boolean dirs = file.getParentFile().mkdirs();
 
-				if (!dirs)
-					throw new IOException("Cannot create path " + file.getParentFile().getAbsolutePath());
-
+					if (!dirs)
+						throw new IOException("Cannot create path " + file.getParentFile().getAbsolutePath());
+				}
 				file.createNewFile();
 			} else if (!file.canWrite() || !file.canRead()) {
 				file.setWritable(true);

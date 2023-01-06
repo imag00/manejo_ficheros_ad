@@ -43,4 +43,14 @@
     <servlet-name>ServletAccesoDA</servlet-name>
     <url-pattern>/ServletAccesoDA</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAcceso2</display-name>
+    <servlet-name>ServletAcceso2</servlet-name>
+    <servlet-class>interfaz.ServletAcceso2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAcceso2</servlet-name>
+    <url-pattern>/ServletAcceso2</url-pattern>
+  </servlet-mapping>
 </web-app>

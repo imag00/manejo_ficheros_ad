@@ -3,14 +3,13 @@ package interfaz;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import dev.amrv.xls.ExcelOperator;
 import ficheros.DataRow;
 import ficheros.IOFichero;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class ServletAccesoDA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +18,7 @@ public class ServletAccesoDA extends HttpServlet {
 
 	public ServletAccesoDA() {
 		super();
+		loadFileHandlers();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class ServletAccesoDA extends HttpServlet {
 	 * 
 	 */
 	public void loadFileHandlers() {
-		fileOperators.put("xls", new ExcelOperator("DatosAbiertos.xls"));
+		fileOperators.put("xls", new ExcelOperator("C:\\\\Users\\\\Usuario\\\\Downloads\\\\educacion-infantil.-numero-de-plazas-y-alumnos-desde-2012.xls"));
 	}
 
 	@Override
@@ -36,6 +36,7 @@ public class ServletAccesoDA extends HttpServlet {
 		super.doPost(req, resp);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String accion = request.getParameter("accion");
@@ -66,29 +67,11 @@ public class ServletAccesoDA extends HttpServlet {
 		lectura(request, response, fichero);
 	}
 
-	private void escritura(DataRow objeto, String fichero) throws Exception {
-
-		switch (fichero) {
-		case "xls":
-			// new EscrituraXLS("escrituraExcel.xls").write(objeto);
-			break;
-		case "csv":
-			// [Nombre de la clase de XLS].write(objeto);
-			break;
-		case "json":
-			// [Nombre de la clase de XLS].write(objeto);
-			break;
-		case "xml":
-			// [Nombre de la clase de XLS].write(objeto);
-			break;
-		default:
-			throw new Exception("Tipo de fichero no válido");
-		}
-	}
-
 	private void lectura(HttpServletRequest request, HttpServletResponse response, String fichero) {
-		if (fileOperators.containsKey(fichero))
-			throwError(request, response, "Tipo de fichero no válido");
+		if (!fileOperators.containsKey(fichero)) {
+			throwError(request, response, "Tipo de fichero no v�lido");
+			return;
+		}
 
 		IOFichero handler = fileOperators.get(fichero);
 		request.setAttribute("handler", handler);
