@@ -13,9 +13,34 @@
     <servlet-name>AccesoDA</servlet-name>
     <jsp-file>/AccesoDA.jsp</jsp-file>
   </servlet>
-<!--mapping-->
   <servlet-mapping>
     <servlet-name>AccesoDA</servlet-name>
-    <url-pattern>/AccesoDA</url-pattern>   
+    <url-pattern>/AccesoDA</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ErrorDA</servlet-name>
+    <jsp-file>/ErrorDA.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ErrorDA</servlet-name>
+    <url-pattern>/ErrorDA</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>DatosAbiertosEJEMPLO</servlet-name>
+    <jsp-file>/DatosAbiertosEJEMPLO.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatosAbiertosEJEMPLO</servlet-name>
+    <url-pattern>/DatosAbiertosEJEMPLO</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAccesoDA</display-name>
+    <servlet-name>ServletAccesoDA</servlet-name>
+    <servlet-class>interfaz.ServletAccesoDA</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAccesoDA</servlet-name>
+    <url-pattern>/ServletAccesoDA</url-pattern>
   </servlet-mapping>
 </web-app>

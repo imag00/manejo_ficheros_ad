@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%
+	boolean errorCamposVacios = false;
+	
+	Object camposVaciosObj = request.getAttribute("camposVacios");
+	if (camposVaciosObj != null)
+		errorCamposVacios = (boolean) camposVaciosObj;
+	
+	request.removeAttribute("camposVacios");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +30,7 @@
 <body>
     <h1>TRATAMIENTO FICHEROS</h1>
 
-    <form action="" method="get">
+    <form action="ServletAccesoDA" method="post">
         <div class="col">
             <table>
                 <tr>
@@ -75,6 +85,9 @@
                     <td><input type="text" name="dato6"></td>
                 </tr>
             </table>
+            <% if (errorCamposVacios) {%>
+            	<b style="color: red">(*) Los campos no pueden estar vacíos</b>
+            <% } %>
         </div>
         <br><br>
         <input type="submit" value="Enviar">
