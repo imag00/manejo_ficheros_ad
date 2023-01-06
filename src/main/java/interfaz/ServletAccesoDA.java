@@ -91,6 +91,7 @@ public class ServletAccesoDA extends HttpServlet {
 			throwError(request, response, "Tipo de fichero no válido");
 
 		IOFichero handler = fileOperators.get(fichero);
+		request.setAttribute("handler", handler);
 
 		try {
 			request.getRequestDispatcher(handler.getJSPResultName()).forward(request, response);
