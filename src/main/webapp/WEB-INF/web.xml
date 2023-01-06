@@ -34,6 +34,14 @@
     <url-pattern>/DatosAbiertosEJEMPLO</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>DatosAbiertosJSON</servlet-name>
+    <jsp-file>/DatosAbiertosJSON.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatosAbiertosJSON</servlet-name>
+    <url-pattern>/DatosAbiertosJSON</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>ServletAccesoDA</display-name>
     <servlet-name>ServletAccesoDA</servlet-name>

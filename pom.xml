@@ -19,4 +19,17 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+	<dependency>
+      	<groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+	</dependency>
+  	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20220924</version>
+	</dependency>
+  </dependencies>
 </project>
