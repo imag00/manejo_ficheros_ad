@@ -6,10 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.stream.Stream;
-
-import ficheros.EjemploReaderWriter;
 import ficheros.Objeto;
+import ficheros.XMLReaderWriter;
 
 public class ServletAccesoDA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,7 +41,7 @@ public class ServletAccesoDA extends HttpServlet {
 		lectura(request, response, fichero);
 	}
 		
-	private void escritura(Objeto objeto, String fichero) throws Exception {
+	private static void escritura(Objeto objeto, String fichero) throws Exception {
 		
 		switch (fichero) {
 			case "xls":
@@ -53,10 +51,10 @@ public class ServletAccesoDA extends HttpServlet {
 				// [Nombre de la clase de XLS].write(objeto);
 				break;
 			case "json":
-				// [Nombre de la clase de XLS].write(objeto);
+				//JSONReaderWriter.write(objeto);
 				break;
 			case "xml":
-				// [Nombre de la clase de XLS].write(objeto);
+				XMLReaderWriter.write(objeto);
 				break;
 			default:
 				throw new Exception("Tipo de fichero no válido");
