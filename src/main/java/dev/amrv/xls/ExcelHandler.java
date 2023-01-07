@@ -87,7 +87,7 @@ public class ExcelHandler {
 						builder.append(Boolean.toString(cell.getBooleanCellValue()));
 						break;
 					case NUMERIC:
-						builder.append(cell.getNumericCellValue() + "");
+						builder.append((cell.getNumericCellValue() + "").replace(".0", ""));
 						break;
 					case STRING:
 						builder.append(cell.getStringCellValue());
@@ -99,7 +99,7 @@ public class ExcelHandler {
 					}
 					break;
 				case NUMERIC:
-					builder.append(cell.getNumericCellValue() + "");
+					builder.append((cell.getNumericCellValue() + "").replace(".0", ""));
 					break;
 				case STRING:
 					builder.append(cell.getStringCellValue());
