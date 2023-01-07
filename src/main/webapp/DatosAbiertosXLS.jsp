@@ -13,14 +13,6 @@
 </head>
 <body>
 	<table border="1">
-		<tr>
-			<td>Dato1</td>
-			<td>Dato2</td>
-			<td>Dato3</td>
-			<td>Dato4</td>
-			<td>Dato5</td>
-			<td>Dato6</td>
-		</tr>
 		<% for(Objeto obj : excelHandler.read()) {%>
 			<tr>
 				<td><%= obj.getDato1() %></td>
