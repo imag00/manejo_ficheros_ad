@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	id="WebApp_ID" version="5.0">
+	<display-name>Test_RaW_CSV</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>AccesoDA</servlet-name>
+		<jsp-file>/AccesoDA.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AccesoDA</servlet-name>
+		<url-pattern>/AccesoDA</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ErrorDA</servlet-name>
+		<jsp-file>/ErrorDA.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ErrorDA</servlet-name>
+		<url-pattern>/ErrorDA</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ServletAccesoDA</display-name>
+		<servlet-name>ServletAccesoDA</servlet-name>
+		<servlet-class>interfaz.ServletAccesoDA</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletAccesoDA</servlet-name>
+		<url-pattern>/ServletAccesoDA</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DatosAbiertosCSV</servlet-name>
+		<jsp-file>/DatosAbiertosCSV.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DatosAbiertosCSV</servlet-name>
+		<url-pattern>/DatosAbiertosCSV</url-pattern>
+	</servlet-mapping>
+</web-app>
