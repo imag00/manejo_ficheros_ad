@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 import javax.swing.filechooser.FileSystemView;
 
@@ -62,7 +61,7 @@ public class ResourceExporter implements ServletContextListener {
 	}
 
 	private void createPhysicalResource(String destinationPath, String resourceName) throws IOException {
-		final InputStream stream = ResourceExporter.class.getClassLoader().getResourceAsStream("DatosAbiertosCSV.csv");
+		final InputStream stream = ResourceExporter.class.getClassLoader().getResourceAsStream(resourceName);
 
 		if (stream == null)
 			throw new RuntimeException(
