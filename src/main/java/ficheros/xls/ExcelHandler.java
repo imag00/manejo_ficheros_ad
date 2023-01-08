@@ -23,6 +23,12 @@ public class ExcelHandler {
 
 	public ExcelHandler(String file) {
 		this.file = new File(file);
+		updateWorkbook();
+	}
+
+	private void updateWorkbook() {
+		if (workbook != null)
+			return;
 		try {
 			workbook = WorkbookFactory.create(this.file);
 		} catch (EncryptedDocumentException e) {
@@ -35,6 +41,7 @@ public class ExcelHandler {
 	}
 
 	public void append(Dato obj) throws Exception {
+		updateWorkbook();
 		Sheet page = workbook.getSheetAt(0);
 
 		Row row = page.createRow(page.getLastRowNum() + 1);
@@ -48,7 +55,7 @@ public class ExcelHandler {
 	}
 
 	public void write(DataRow[] data) throws Exception {
-
+		updateWorkbook();
 		Sheet page = workbook.createSheet();
 
 		for (int i = 0; i < data.length; i++) {
@@ -67,6 +74,7 @@ public class ExcelHandler {
 	}
 
 	public Dato[] read() throws Exception {
+		updateWorkbook();
 		List<DataRow> rows = new ArrayList<>();
 
 		Sheet page = workbook.getSheetAt(0);
