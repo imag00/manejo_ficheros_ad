@@ -22,9 +22,9 @@ import org.xml.sax.SAXException;
 import interfaz.ServletAccesoDA;
 
 public class XMLReaderWriter {
-	private static final String PATH = "DatosAbiertosXML.xml";
+	private static final String PATH = ResourceExporter.ROOT_LOCATION + "DatosAbiertosXML.xml";
 
-	public static ArrayList<Dato> read() throws Exception {		
+	public static ArrayList<Dato> read() throws Exception {
 
 		ArrayList<Dato> lineas = new ArrayList<>();
 		lineas.add(new Dato("Año", "Número de plazas", "Número de alumnos 0-1 años", "Número de alumnos 1-2 años",
@@ -84,7 +84,7 @@ public class XMLReaderWriter {
 			row.setAttribute("Número_total_de_alumnos", objeto.getAlumnosTotal());
 
 			documentoXML.getDocumentElement().appendChild(row);
-			
+
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(documentoXML);

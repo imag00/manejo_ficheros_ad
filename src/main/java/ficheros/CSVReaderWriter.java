@@ -12,7 +12,7 @@ import interfaz.ServletAccesoDA;
 
 public class CSVReaderWriter {
 
-	private static final String FILE_PATH = "DatosAbiertosCSV.csv";
+	private static final String FILE_PATH = ResourceExporter.ROOT_LOCATION + "DatosAbiertosCSV.csv";
 
 	public static ArrayList<Dato> read() throws Exception {
 		ArrayList<Dato> objs = new ArrayList<>();
@@ -22,11 +22,11 @@ public class CSVReaderWriter {
 			String row;
 			while ((row = reader.readLine()) != null) {
 				// En caso de que el archivo empiece con el BOM de UTF-8 lo saltamos
-		        if (row.startsWith("\uFEFF"))
-		            row = row.substring(1);
-		        
-		        row = row.replaceAll("\"", "");
-		        
+				if (row.startsWith("\uFEFF"))
+					row = row.substring(1);
+
+				row = row.replaceAll("\"", "");
+
 				String[] datos = row.split(",");
 				System.out.println(Arrays.toString(datos));
 				objs.add(new Dato(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]));
