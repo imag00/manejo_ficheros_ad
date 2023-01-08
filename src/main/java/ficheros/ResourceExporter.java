@@ -17,7 +17,7 @@ import jakarta.servlet.ServletContextListener;
 public class ResourceExporter implements ServletContextListener {
 
 	public static String ROOT_LOCATION = FileSystemView.getFileSystemView().getDefaultDirectory().getAbsolutePath()
-			+ File.separator + "AccesoDatosDAM" + File.separator;
+			+ File.separator + "DatosAbiertos_Adrian_Ismael_Marcos_Sabrina" + File.separator;
 
 	/**
 	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
@@ -28,21 +28,18 @@ public class ResourceExporter implements ServletContextListener {
 		try {
 			createPhysicalResource(ROOT_LOCATION + "DatosAbiertosCSV.csv", "DatosAbiertosCSV.csv");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		try {
 			createPhysicalResource(ROOT_LOCATION + "DatosAbiertosJSON.json", "DatosAbiertosJSON.json");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		try {
 			createPhysicalResource(ROOT_LOCATION + "DatosAbiertosXLS.xls", "DatosAbiertosXLS.xls");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -57,7 +54,6 @@ public class ResourceExporter implements ServletContextListener {
 	 * @see ServletContextListener#contextDestroyed(ServletContextEvent)
 	 */
 	public void contextDestroyed(ServletContextEvent sce) {
-		// TODO Auto-generated method stub
 	}
 
 	private void createPhysicalResource(String destinationPath, String resourceName) throws IOException {
